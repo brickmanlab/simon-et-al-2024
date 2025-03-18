@@ -1,0 +1,19 @@
+{
+  "template": "https://github.com/brickmanlab/ngs-template",
+  "commit": "86a9d99eb2c823ea970f7286b132643523331894",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project": "simons_et_al",
+      "__project_name": "simons_et_al",
+      "author": "Martin Proks and Nazmus Salehin",
+      "date": "20241212",
+      "description": "FGF treated and MEK inhibited mouse and human blastocysts",
+      "_extensions": [
+        "jinja2_time.TimeExtension"
+      ],
+      "_template": "https://github.com/brickmanlab/ngs-template"
+    }
+  },
+  "directory": "project"
+}

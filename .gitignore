@@ -1,0 +1,8 @@
+data/
+documents/
+figures/
+notebooks/figures/
+reports/
+results/
+description.yml
+metadata.yml
