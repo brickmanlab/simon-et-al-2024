@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.302">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Naz Salehin">
+<meta name="dcterms.date" content="2026-03-11">
+
+<title>simons_et_al - Niakan - Plots for cell type predictions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_human_loadAndIntegrate.html">Reports</a></li><li class="breadcrumb-item"><a href="../notebooks/04_mouse_integrationPlots.html">Niakan - Plots for cell type predictions</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">simons_et_al</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://twitter.com/LabBrickman" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/brickmanlab" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../README.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">simon_et_al</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Reports</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/01_human_loadAndIntegrate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08 - Niakan human</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/01_mouse_loadAndIntegrate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Niakan mouse treatment (follow-up on 06 analysis)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/04_human_integrationPlots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Niakan - Plots for cell type predictions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/04_mouse_integrationPlots.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Niakan - Plots for cell type predictions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/05_human_volcanoPlotsAndUmaps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 Human VolcanoPlotsAndUmaps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#validations" id="toc-validations" class="nav-link active" data-scroll-target="#validations"><span class="header-section-number">0.1</span> Validations</a></li>
+  <li><a href="#niakan-analysis" id="toc-niakan-analysis" class="nav-link" data-scroll-target="#niakan-analysis"><span class="header-section-number">1</span> Niakan analysis</a>
+  <ul class="collapse">
+  <li><a href="#prediction" id="toc-prediction" class="nav-link" data-scroll-target="#prediction"><span class="header-section-number">1.1</span> Prediction</a></li>
+  <li><a href="#pcaumap" id="toc-pcaumap" class="nav-link" data-scroll-target="#pcaumap"><span class="header-section-number">1.2</span> PCA/UMAP</a></li>
+  </ul></li>
+  <li><a href="#integration-with-mouse-dataset" id="toc-integration-with-mouse-dataset" class="nav-link" data-scroll-target="#integration-with-mouse-dataset"><span class="header-section-number">2</span> Integration with mouse dataset</a>
+  <ul class="collapse">
+  <li><a href="#pseudotime" id="toc-pseudotime" class="nav-link" data-scroll-target="#pseudotime"><span class="header-section-number">2.1</span> Pseudotime</a></li>
+  </ul></li>
+  <li><a href="#save-additional-stuff" id="toc-save-additional-stuff" class="nav-link" data-scroll-target="#save-additional-stuff"><span class="header-section-number">3</span> Save additional stuff</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Niakan - Plots for cell type predictions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Naz Salehin </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 11, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>which pip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>~/projects/data/Brickman/conda/envs/scvi-1.1.5/bin/pip</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scvi</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anndata</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scanpy <span class="im">as</span> sc</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'svg.fonttype'</span>] <span class="op">=</span> <span class="st">'none'</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>lineage_colors <span class="op">=</span> {</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zygote'</span>: <span class="st">'#7985A5'</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'2C'</span>: <span class="st">'#B3C81E'</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'4C'</span>: <span class="st">'#67BB30'</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'8C'</span>: <span class="st">'#028A46'</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'16C'</span>: <span class="st">'#657cbd'</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ICM'</span>: <span class="st">'#F6C445'</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'TE'</span>: <span class="st">'#5a94ce'</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'EPI'</span>: <span class="st">'#B46F9C'</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PrE'</span>: <span class="st">'#D05B61'</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>mouse_ct_colors <span class="op">=</span> {</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zygote'</span>: <span class="st">'#7985A5'</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'2C'</span>: <span class="st">'#B3C81E'</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'4C'</span>: <span class="st">'#67BB30'</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'8C'</span>: <span class="st">'#028A46'</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'16C'</span>: <span class="st">'#657cbd'</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.25-ICM'</span>: <span class="st">'#fadc8f'</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.25-TE'</span>: <span class="st">'#5185b9'</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.5-ICM'</span>: <span class="st">'#f8d06a'</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.5-TE'</span>: <span class="st">'#7ba9d8'</span>,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.5-EPI'</span>: <span class="st">'#c38cb0'</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.5-PrE'</span>: <span class="st">'#d97c81'</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E3.75-ICM'</span>: <span class="st">'#F6C445'</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E4.5-TE'</span>: <span class="st">'#5a94ce'</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E4.5-EPI'</span>: <span class="st">'#B46F9C'</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E4.5-PrE'</span>: <span class="st">'#D05B61'</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unknown'</span>: <span class="st">'lightgrey'</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys<span class="op">;</span> sys.path.append(<span class="st">"../scripts/"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> helpers <span class="im">import</span> normalize_smartseq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mouse <span class="op">=</span> sc.read_h5ad(<span class="st">"/home/fdb589/Brickman/projects/proks-salehin-et-al-2023/data/processed/01_mouse_reprocessed.h5ad"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'ct_custom'</span>] <span class="op">=</span> mouse.obs.ct.replace(<span class="st">'E3.75-ICM'</span>, <span class="st">'Unknown'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.pp.highly_variable_genes(mouse, flavor="cell_ranger", n_top_genes=3_000, batch_key="batch", subset=True)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>sc.pp.highly_variable_genes(mouse, flavor<span class="op">=</span><span class="st">"seurat_v3"</span>, n_top_genes<span class="op">=</span><span class="dv">3_000</span>, batch_key<span class="op">=</span><span class="st">"batch"</span>, layer<span class="op">=</span><span class="st">'counts'</span>, subset<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'batch_og'</span>] <span class="op">=</span> mouse.obs[<span class="st">'batch'</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'batch'</span>] <span class="op">=</span> mouse.obs.batch</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># mouse.obs['batch'] = mouse.obs.technology.cat.codes.astype(str) + "_" + mouse.obs.batch.cat.codes.astype(str)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mouse.obs['batch'] = mouse.obs.technology.cat.codes.astype(str) + "_" + mouse.obs.experiment.cat.codes.astype(str) + mouse.obs.batch.cat.codes.astype(str)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>scvi.model.SCVI.setup_anndata(mouse, layer<span class="op">=</span><span class="st">"counts"</span>, batch_key<span class="op">=</span><span class="st">"batch"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>vae <span class="op">=</span> scvi.model.SCVI(mouse, n_layers<span class="op">=</span><span class="dv">2</span>, gene_likelihood<span class="op">=</span><span class="st">'nb'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>vae.train(max_epochs<span class="op">=</span><span class="dv">400</span>, early_stopping<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>lvae <span class="op">=</span> scvi.model.SCANVI.from_scvi_model(vae, adata<span class="op">=</span>mouse, labels_key<span class="op">=</span><span class="st">"ct_custom"</span>, unlabeled_category<span class="op">=</span><span class="st">"Unknown"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>lvae.train(max_epochs<span class="op">=</span><span class="dv">20</span>, n_samples_per_label<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>mouse.obsm[<span class="st">'X_scVI'</span>] <span class="op">=</span> vae.get_latent_representation()</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>mouse.obsm[<span class="st">'X_scANVI'</span>] <span class="op">=</span> lvae.get_latent_representation()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'predictions'</span>] <span class="op">=</span> lvae.predict()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'predictions'</span>] <span class="op">=</span> mouse.obs[<span class="st">'predictions'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'predictions_stages'</span>] <span class="op">=</span> [x.split(<span class="st">'-'</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> x <span class="kw">in</span> mouse.obs.predictions]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>mouse.obs[<span class="st">'predictions_stages'</span>] <span class="op">=</span> mouse.obs[<span class="st">'predictions_stages'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>mouse.uns[<span class="st">'predictions_colors'</span>] <span class="op">=</span> [mouse_ct_colors[ct] <span class="cf">for</span> ct <span class="kw">in</span> mouse.obs.predictions.cat.categories]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>mouse.uns[<span class="st">'predictions_stages_colors'</span>] <span class="op">=</span> [lineage_colors[ct] <span class="cf">for</span> ct <span class="kw">in</span> mouse.obs.predictions_stages.cat.categories]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mouse.obs.query(<span class="st">'ct == "E3.75-ICM"'</span>)[<span class="st">'predictions'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sc.pp.neighbors(mouse, use_rep<span class="op">=</span><span class="st">'X_scVI'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sc.tl.umap(mouse)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sc.tl.diffmap(mouse)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>sc.tl.paga(mouse, groups<span class="op">=</span><span class="st">'predictions'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>sc.pl.paga(mouse, color<span class="op">=</span>[<span class="st">'predictions'</span>], frameon<span class="op">=</span><span class="va">False</span>, fontoutline<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sc.tl.draw_graph(mouse, init_pos<span class="op">=</span><span class="st">'paga'</span>, n_jobs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(mouse, color<span class="op">=</span>[<span class="st">'technology'</span>, <span class="st">'predictions'</span>, <span class="st">'predictions_stages'</span>], wspace<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sc.pl.draw_graph(mouse, color<span class="op">=</span>[<span class="st">'technology'</span>, <span class="st">'predictions'</span>, <span class="st">'predictions_stages'</span>], wspace<span class="op">=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mouse.obs.value_counts([<span class="st">'technology'</span>, <span class="st">'predictions'</span>]).unstack().fillna(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vae.save(<span class="st">"../results/12_mouse/scvi"</span>, overwrite<span class="op">=</span><span class="va">True</span>, save_anndata<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>lvae.save(<span class="st">"../results/12_mouse/scanvi_ns15"</span>, overwrite<span class="op">=</span><span class="va">True</span>, save_anndata<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ## Updated AI model</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># vae = scvi.model.SCVI.load("../../proks-salehin-et-al-2023/results/02_mouse_integration/scvi/")</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># # Retraining</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># vae.adata.obs['ct_custom'] = vae.adata.obs.ct.replace('E3.75-ICM', 'Unknown')</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># lvae = scvi.model.SCANVI.from_scvi_model(vae, labels_key="ct_custom", unlabeled_category="Unknown")</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># lvae.train(n_samples_per_label=15)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # lvae.save("../results/12_mouse/scanvi_ns_15", overwrite=True, save_anndata=True)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="validations" class="level3" data-number="0.1">
+<h3 data-number="0.1" data-anchor-id="validations"><span class="header-section-number">0.1</span> Validations</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lvae <span class="op">=</span> scvi.model.SCANVI.load(<span class="st">'../results/12_mouse/scanvi_ns15'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>lvae.adata.obs[<span class="st">'predictions'</span>] <span class="op">=</span> lvae.predict()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lvae.adata.obs.query(<span class="st">'ct == "E3.75-ICM"'</span>)[<span class="st">'predictions'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> [<span class="st">'Zygote'</span>, <span class="st">'2C'</span>, <span class="st">'4C'</span>, <span class="st">'8C'</span>, <span class="st">'16C'</span>, <span class="st">'E3.25-ICM'</span>, <span class="st">'E3.25-TE'</span>, <span class="st">'E3.5-ICM'</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>         <span class="st">'E3.5-TE'</span>, <span class="st">'E3.5-EPI'</span>, <span class="st">'E3.5-PrE'</span>, <span class="st">'E4.5-TE'</span>, <span class="st">'E4.5-EPI'</span>, <span class="st">'E4.5-PrE'</span>]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.heatmap(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    sc.metrics.confusion_matrix(<span class="st">'ct'</span>, <span class="st">'predictions'</span>, lvae.adata.obs).loc[order, order],</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    linewidths<span class="op">=</span><span class="fl">0.2</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>, square<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="fl">.5</span>, linecolor<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="niakan-analysis" class="level2" data-number="1">
+<h2 data-number="1" data-anchor-id="niakan-analysis"><span class="header-section-number">1</span> Niakan analysis</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>GENE_LEN <span class="op">=</span> <span class="st">'~/Brickman/shared/references/mus_musculus/ensembl/GRCm38_102/Mus_musculus_GRCm38_102_gene_length.txt'</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adata = sc.read_h5ad("../data/external/niakan_et_al/mouse/mtx_conversions/combined_matrix.h5ad")</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> sc.read_h5ad(<span class="st">"../data/assays/SCR_MP_20241207/processed/combined_matrix.h5ad"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'LIMS.ID'</span>] <span class="op">=</span> adata.obs[<span class="st">'sample'</span>].<span class="bu">str</span>.split(<span class="st">'_'</span>, expand<span class="op">=</span><span class="va">True</span>).iloc[:, <span class="dv">0</span>]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>adata.obs <span class="op">=</span> adata.obs.merge(pd.read_csv(<span class="st">"../data/assays/SCR_MP_20241207/raw/Samples_LIMSID_Mouse.csv"</span>), </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                            left_on<span class="op">=</span><span class="st">'sample'</span>, right_on<span class="op">=</span><span class="st">'LIMS.ID'</span>, how<span class="op">=</span><span class="st">'left'</span>).set_index(adata.obs_names)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'batch'</span>] <span class="op">=</span> <span class="st">'NIAKAN_'</span> <span class="op">+</span> adata.obs[<span class="st">'Plate.no'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'experiment'</span>] <span class="op">=</span> <span class="st">"Simon et al, 2024"</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'technology'</span>] <span class="op">=</span> <span class="st">"SMART-seq2"</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[<span class="op">~</span>adata.obs[<span class="st">'sample'</span>].isin([<span class="st">'SIM5111A40'</span>, <span class="st">'SIM5111A48'</span>])]</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[adata.obs.QC <span class="op">==</span> <span class="st">"Pass"</span>]</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[<span class="op">~</span>adata.obs.Treatment.isna()].copy()</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>adata.var[<span class="st">'mt'</span>] <span class="op">=</span> adata.var.gene_symbol.<span class="bu">str</span>.startswith(<span class="st">'mt-'</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>sc.pp.calculate_qc_metrics(adata, qc_vars<span class="op">=</span>[<span class="st">'mt'</span>], percent_top<span class="op">=</span><span class="va">None</span>, log1p<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[adata.obs.pct_counts_mt <span class="op">&lt;</span> <span class="dv">25</span>].copy()</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> normalize_smartseq(adata, GENE_LEN)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>adata.var[<span class="st">'gene_id'</span>] <span class="op">=</span> adata.var_names</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>adata.var_names <span class="op">=</span> adata.var.gene_symbol.<span class="bu">str</span>.lower().values</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>adata.var_names_make_unique()</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>adata.layers[<span class="st">"counts"</span>] <span class="op">=</span> adata.X.copy()</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>sc.pp.normalize_total(adata)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>sc.pp.log1p(adata)</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>adata.raw <span class="op">=</span> adata</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>sc.pp.highly_variable_genes(adata, flavor<span class="op">=</span><span class="st">"cell_ranger"</span>, n_top_genes<span class="op">=</span><span class="dv">3_000</span>, batch_key<span class="op">=</span><span class="st">"batch"</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>sc.tl.pca(adata)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>sc.pl.pca(adata, color<span class="op">=</span><span class="st">'Treatment'</span>)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>display(adata.obs.Treatment.value_counts())</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>adata.write(<span class="st">'../results/12_niakan.mouse.h5ad'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="prediction" class="level3" data-number="1.1">
+<h3 data-number="1.1" data-anchor-id="prediction"><span class="header-section-number">1.1</span> Prediction</h3>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mouse_query <span class="op">=</span> sc.read_h5ad(<span class="st">'../results/12_niakan.mouse.h5ad'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> mouse_query.varm[<span class="st">'PCs'</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>lvae <span class="op">=</span> scvi.model.SCANVI.load(<span class="st">"../results/12_mouse/scanvi_ns15"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>scvi.model.SCANVI.prepare_query_anndata(mouse_query, lvae)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>lvae_q <span class="op">=</span> scvi.model.SCANVI.load_query_data(mouse_query, lvae)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>lvae_q.train(max_epochs<span class="op">=</span><span class="dv">100</span>, plan_kwargs<span class="op">=</span><span class="bu">dict</span>(weight_decay<span class="op">=</span><span class="fl">0.0</span>), check_val_every_n_epoch<span class="op">=</span><span class="dv">10</span>, early_stopping<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Trainer will use only 1 of 4 GPUs because it is running inside an interactive / notebook environment. You may try to set `Trainer(devices=4)` but please note that multi-GPU inside interactive / notebook environments is considered experimental and unstable. Your mileage may vary.
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /home/fdb589/projects/data/Brickman/conda/envs/scvi- ...
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/scvi/model/base/_utils.py:66: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model = torch.load(model_path, map_location=map_location)
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/anndata/_core/merge.py:1362: UserWarning: Only some AnnData objects have `.raw` attribute, not concatenating `.raw` attributes.
+  warn(
+Trainer will use only 1 of 4 GPUs because it is running inside an interactive / notebook environment. You may try to set `Trainer(devices=4)` but please note that multi-GPU inside interactive / notebook environments is considered experimental and unstable. Your mileage may vary.
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /home/fdb589/projects/data/Brickman/conda/envs/scvi- ...
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/scvi/data/_manager.py:215: UserWarning: Missing labels key ct_custom. Filling in with unlabeled category Unknown.
+  field_registry[_constants._STATE_REGISTRY_KEY] = field.transfer_field(
+Trainer will use only 1 of 4 GPUs because it is running inside an interactive / notebook environment. You may try to set `Trainer(devices=4)` but please note that multi-GPU inside interactive / notebook environments is considered experimental and unstable. Your mileage may vary.
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /home/fdb589/projects/data/Brickman/conda/envs/scvi- ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /home/fdb589/projects/data/Brickman/conda/envs/scvi- ...
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:441: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=223` in the `DataLoader` to improve performance.
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/pytorch/loops/fit_loop.py:293: The number of training batches (1) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:441: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=223` in the `DataLoader` to improve performance.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>INFO     File ../results/12_mouse/scanvi_ns15/model.pt already downloaded                                          
+INFO     Found 84.83333333333334% reference vars in query data.                                                    
+INFO     Training for 100 epochs.                                                                                  
+Epoch 91/100:  91%|█████████ | 91/100 [00:02&lt;00:00, 32.87it/s, v_num=1, train_loss_step=1.51e+4, train_loss_epoch=1.51e+4]
+Monitored metric elbo_validation did not improve in the last 45 records. Best score: 13435.031. Signaling Trainer to stop.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mouse_query <span class="op">=</span> sc.read_h5ad(<span class="st">'../results/12_niakan.mouse.h5ad'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mouse_query.obsm[<span class="st">"X_scANVI"</span>] <span class="op">=</span> lvae_q.get_latent_representation()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>mouse_query.obs[<span class="st">'predictions'</span>] <span class="op">=</span> lvae_q.predict()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># remove TE cells</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mouse_query = mouse_query[~mouse_query.obs.predictions.str.contains('TE')].copy()</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>mouse_query.obs[<span class="st">'predictions'</span>] <span class="op">=</span> mouse_query.obs[<span class="st">'predictions'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>mouse_query.obs[<span class="st">'entropy'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> lvae_q.predict(soft<span class="op">=</span><span class="va">True</span>).<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>mouse_query.uns[<span class="st">'predictions_colors'</span>] <span class="op">=</span> [mouse_ct_colors[ct] <span class="cf">for</span> ct <span class="kw">in</span> mouse_query.obs.predictions.cat.categories]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pcaumap" class="level3" data-number="1.2">
+<h3 data-number="1.2" data-anchor-id="pcaumap"><span class="header-section-number">1.2</span> PCA/UMAP</h3>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sc.pp.neighbors(mouse_query)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sc.tl.pca(mouse_query)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sc.tl.umap(mouse_query)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">4</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.pca(mouse_query, color <span class="op">=</span> [<span class="st">'predictions'</span>, <span class="st">'entropy'</span>, <span class="st">'Treatment'</span>], wspace<span class="op">=</span><span class="fl">0.25</span>, vmax<span class="op">=</span><span class="dv">1</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_PCA.pdf'</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.pca(mouse_query, color <span class="op">=</span> [</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'pou5f1'</span>, <span class="st">'sox2'</span>, <span class="st">'nanog'</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gata6'</span>, <span class="st">'gata4'</span>, <span class="st">'pdgfra'</span>,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'cdx2'</span>, <span class="st">'hand1'</span>, <span class="st">'krt7'</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    ], ncols<span class="op">=</span><span class="dv">3</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_PCA_markers.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-20-output-1.png"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-20-output-2.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>markers <span class="op">=</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'EPI'</span>: [<span class="st">'pou5f1'</span>, <span class="st">'sox2'</span>, <span class="st">'nanog'</span>],</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PrE'</span>: [<span class="st">'gata6'</span>, <span class="st">'gata4'</span>, <span class="st">'pdgfra'</span>],</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'TE'</span>: [<span class="st">'cdx2'</span>, <span class="st">'hand1'</span>, <span class="st">'krt7'</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.dotplot(mouse_query, markers, groupby<span class="op">=</span><span class="st">'Treatment'</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_dotplot_markers.pdf'</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.matrixplot(adata, markers, groupby<span class="op">=</span><span class="st">'Treatment'</span>, dendrogram<span class="op">=</span><span class="va">True</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_matrixplot_markers.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'adata' is not defined</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-21-output-2.png"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.rcParams['figure.figsize'] = [5, 4]</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ax = sc.pl.umap(mouse_query, color=['predictions'], s=120, return_fig = True)</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.savefig('../figures/niakan_12_mouse_UMAP_01.pdf')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.rcParams['figure.figsize'] = [5, 4]</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ax = sc.pl.umap(mouse_query, color=['Treatment'], s=120, return_fig = True)</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ax.savefig('../figures/niakan_12_mouse_UMAP_02.pdf')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">4</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cmtx <span class="op">=</span> sc.metrics.confusion_matrix(<span class="st">'Treatment'</span>, <span class="st">'predictions'</span>, normalize<span class="op">=</span><span class="va">True</span>, data<span class="op">=</span>mouse_query.obs)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> cmtx.plot(kind<span class="op">=</span><span class="st">'barh'</span>,legend<span class="op">=</span><span class="va">True</span>, stacked<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span>mouse_ct_colors)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ax.legend(cmtx.columns, loc<span class="op">=</span><span class="st">'center right'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.17</span>, <span class="fl">0.5</span>), frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>ax.figure.savefig(<span class="st">'../figures/niakan_12_mouse_Proportions_withLegend.pdf'</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>display(sc.metrics.confusion_matrix(<span class="st">'Treatment'</span>, <span class="st">'predictions'</span>, normalize<span class="op">=</span><span class="va">False</span>, data<span class="op">=</span>mouse_query.obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">predictions</th>
+<th data-quarto-table-cell-role="th">E3.5-ICM</th>
+<th data-quarto-table-cell-role="th">E3.5-TE</th>
+<th data-quarto-table-cell-role="th">E4.5-EPI</th>
+<th data-quarto-table-cell-role="th">E4.5-PrE</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Treatment</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DMSO</td>
+<td>0</td>
+<td>1</td>
+<td>17</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Ulixertinib</td>
+<td>2</td>
+<td>0</td>
+<td>24</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-24-output-2.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mouse_query.write(<span class="st">'../results/12_niakan.mouse.withPredictions.h5ad'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="integration-with-mouse-dataset" class="level2" data-number="2">
+<h2 data-number="2" data-anchor-id="integration-with-mouse-dataset"><span class="header-section-number">2</span> Integration with mouse dataset</h2>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>lvae <span class="op">=</span> scvi.model.SCANVI.load(<span class="st">'../results/12_mouse/scanvi_ns15'</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>lvae.adata.obs[<span class="st">'predictions'</span>] <span class="op">=</span> lvae.predict()</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>lvae_q.adata.obs[<span class="st">'predictions'</span>] <span class="op">=</span> mouse_query.obs.predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Trainer will use only 1 of 4 GPUs because it is running inside an interactive / notebook environment. You may try to set `Trainer(devices=4)` but please note that multi-GPU inside interactive / notebook environments is considered experimental and unstable. Your mileage may vary.
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/lightning/fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python /home/fdb589/projects/data/Brickman/conda/envs/scvi- ...
+/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/scvi/model/base/_utils.py:66: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model = torch.load(model_path, map_location=map_location)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>INFO     File ../results/12_mouse/scanvi_ns15/model.pt already downloaded                                          </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> anndata.concat([lvae.adata, lvae_q.adata])</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>combined.obs[<span class="st">'dataset'</span>] <span class="op">=</span> <span class="st">'Reference v1.1'</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>combined.obs.loc[lvae_q.adata.obs_names, <span class="st">'dataset'</span>] <span class="op">=</span> <span class="st">'Simon et al., 2024'</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>combined.obsm[<span class="st">'X_scANVI'</span>] <span class="op">=</span> np.concatenate([lvae.get_latent_representation(), lvae_q.get_latent_representation()])</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>combined.obs.predictions <span class="op">=</span> combined.obs.predictions.astype(<span class="st">'category'</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>combined.obs[<span class="st">'stage'</span>] <span class="op">=</span> [prediction.split(<span class="st">'-'</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> prediction <span class="kw">in</span> combined.obs.predictions]</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>combined.obs.stage <span class="op">=</span> combined.obs.stage.astype(<span class="st">'category'</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>combined.uns[<span class="st">'predictions_colors'</span>] <span class="op">=</span> [mouse_ct_colors[ct] <span class="cf">for</span> ct <span class="kw">in</span> combined.obs.predictions.cat.categories]</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>combined.uns[<span class="st">'stage_colors'</span>] <span class="op">=</span> [lineage_colors[ct] <span class="cf">for</span> ct <span class="kw">in</span> combined.obs.stage.cat.categories]</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>combined.obs[<span class="st">'highlight'</span>] <span class="op">=</span> combined.obs.predictions.astype(<span class="bu">str</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>combined.obs.loc[combined.obs.dataset <span class="op">==</span> <span class="st">'Simon et al., 2024'</span>, <span class="st">'highlight'</span>] <span class="op">=</span> <span class="st">'THIS_STUDY'</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>combined.obs[<span class="st">'highlight'</span>] <span class="op">=</span> combined.obs[<span class="st">'highlight'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>combined.uns[<span class="st">'highlight_colors'</span>] <span class="op">=</span> [mouse_ct_colors.get(ct, <span class="st">'black'</span>) <span class="cf">for</span> ct <span class="kw">in</span> combined.obs.highlight.cat.categories]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/fdb589/projects/data/Brickman/conda/envs/scvi-1.1.5/lib/python3.10/site-packages/anndata/_core/merge.py:1362: UserWarning: Only some AnnData objects have `.raw` attribute, not concatenating `.raw` attributes.
+  warn(</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sc.pp.neighbors(combined, use_rep<span class="op">=</span><span class="st">'X_scANVI'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sc.tl.draw_graph(combined)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>sc.tl.umap(combined)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>sc.tl.diffmap(combined)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>sc.tl.paga(combined, groups<span class="op">=</span><span class="st">'predictions'</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>sc.pl.paga(combined, color<span class="op">=</span>[<span class="st">'predictions'</span>], frameon<span class="op">=</span><span class="va">False</span>, fontoutline<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>sc.tl.draw_graph(combined, init_pos<span class="op">=</span><span class="st">'paga'</span>, n_jobs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-28-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.umap(combined, color<span class="op">=</span>[<span class="st">'dataset'</span>, <span class="st">'predictions'</span>, <span class="st">'technology'</span>, <span class="st">'stage'</span>], ncols<span class="op">=</span><span class="dv">2</span>, wspace<span class="op">=</span><span class="fl">0.3</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_integration_umap.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-29-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>]</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.draw_graph(combined, color<span class="op">=</span>[<span class="st">'dataset'</span>, <span class="st">'predictions'</span>, <span class="st">'technology'</span>, <span class="st">'stage'</span>], ncols<span class="op">=</span><span class="dv">2</span>, wspace<span class="op">=</span><span class="fl">0.3</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_integration_FA.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-30-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.draw_graph(combined, color<span class="op">=</span>[<span class="st">'experiment'</span>, <span class="st">'predictions'</span>, <span class="st">'highlight'</span>, <span class="st">'stage'</span>], ncols<span class="op">=</span><span class="dv">2</span>, wspace<span class="op">=</span><span class="fl">0.45</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_integration_FA_2.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-31-output-1.png"></p>
+</div>
+</div>
+<section id="pseudotime" class="level3" data-number="2.1">
+<h3 data-number="2.1" data-anchor-id="pseudotime"><span class="header-section-number">2.1</span> Pseudotime</h3>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>merged_subset <span class="op">=</span> combined[combined.obs.predictions.<span class="bu">str</span>.contains(<span class="st">'ICM|PrE|EPI'</span>)].copy()</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>merged_subset.obs[<span class="st">'treatment'</span>] <span class="op">=</span> <span class="st">'None'</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>merged_subset.obs.loc[merged_subset.obs_names.intersection(mouse_query.obs_names), <span class="st">'treatment'</span>] <span class="op">=</span> mouse_query.obs.loc[merged_subset.obs_names.intersection(mouse_query.obs_names), <span class="st">'Treatment'</span>].values</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>merged_subset.uns[<span class="st">'treatment_colors'</span>] <span class="op">=</span> [<span class="st">'tab:blue'</span>, <span class="st">'lightgrey'</span>, <span class="st">'tab:orange'</span>]</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>merged_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>AnnData object with n_obs × n_vars = 1325 × 3000
+    obs: 'batch', 'experiment', 'technology', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', 'ct_custom', '_scvi_batch', '_scvi_labels', 'predictions', 'dataset', 'stage', 'highlight', 'treatment'
+    uns: 'predictions_colors', 'stage_colors', 'highlight_colors', 'neighbors', 'draw_graph', 'umap', 'diffmap_evals', 'paga', 'predictions_sizes', 'dataset_colors', 'technology_colors', 'experiment_colors', 'treatment_colors'
+    obsm: 'X_scANVI', 'X_draw_graph_fa', 'X_umap', 'X_diffmap'
+    layers: 'counts'
+    obsp: 'distances', 'connectivities'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sc.pp.neighbors(merged_subset, use_rep<span class="op">=</span><span class="st">"X_scANVI"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sc.tl.umap(merged_subset)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>sc.tl.diffmap(merged_subset)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>sc.tl.paga(merged_subset, groups<span class="op">=</span><span class="st">'predictions'</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>sc.pl.paga(merged_subset, color<span class="op">=</span><span class="st">'predictions'</span>, frameon<span class="op">=</span><span class="va">False</span>, fontoutline<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>sc.tl.draw_graph(merged_subset, init_pos<span class="op">=</span><span class="st">'paga'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-33-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sc.pl.draw_graph(merged_subset, color<span class="op">=</span>[<span class="st">'stage'</span>, <span class="st">'predictions'</span>, <span class="st">'dataset'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-34-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sc.pl.diffmap(merged_subset, color=['stage', 'predictions', 'dataset'])</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>merged_subset.obsm[<span class="st">"X_diffmap_"</span>] <span class="op">=</span> merged_subset.obsm[<span class="st">"X_diffmap"</span>][:, <span class="dv">1</span>:]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>sc.pl.embedding(merged_subset, <span class="st">"diffmap_"</span>, color<span class="op">=</span>[<span class="st">'stage'</span>, <span class="st">'predictions'</span>, <span class="st">'dataset'</span>], wspace<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-35-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>merged_subset.uns[<span class="st">'iroot'</span>] <span class="op">=</span> np.flatnonzero(merged_subset.obs[<span class="st">'predictions'</span>]  <span class="op">==</span> <span class="st">'E3.25-ICM'</span>)[<span class="dv">0</span>]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sc.tl.dpt(merged_subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sc.pl.embedding(merged_subset, <span class="st">"diffmap_"</span>, color<span class="op">=</span>[<span class="st">'predictions'</span>, <span class="st">'treatment'</span>, <span class="st">'stage'</span>, <span class="st">'dpt_pseudotime'</span>], ncols<span class="op">=</span><span class="dv">2</span>, wspace<span class="op">=</span><span class="fl">0.25</span>, return_fig<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>ax.savefig(<span class="st">'../figures/12_niakan_mouse_pseudotime_DC.pdf'</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ax = sc.pl.draw_graph(merged_subset, color=['predictions', 'treatment', 'stage', 'dpt_pseudotime'], ncols=2, wspace=0.25, return_fig=True)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-37-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> merged_subset[merged_subset.obs.predictions.<span class="bu">str</span>.contains(<span class="st">'ICM|EPI'</span>)]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[adata.obs.sort_values(by<span class="op">=</span><span class="st">'dpt_pseudotime'</span>).index].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> adata.to_df()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (df <span class="op">-</span> df.<span class="bu">min</span>()) <span class="op">/</span> (df.<span class="bu">max</span>() <span class="op">-</span> df.<span class="bu">min</span>())</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df<span class="op">\</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    .assign(predictions<span class="op">=</span>adata.obs.predictions.cat.codes.to_numpy())<span class="op">\</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    .assign(pseudotime<span class="op">=</span>adata.obs.dpt_pseudotime.to_numpy())<span class="op">\</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    .assign(treatment<span class="op">=</span>adata.obs.treatment)<span class="op">\</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    .assign(treatment_codes<span class="op">=</span>adata.obs.treatment.cat.codes.to_numpy())<span class="op">\</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    .assign(DMSO<span class="op">=</span>adata.obs.treatment <span class="op">==</span> <span class="st">'DMSO'</span>)<span class="op">\</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    .assign(Ulixertinib<span class="op">=</span>adata.obs.treatment <span class="op">==</span> <span class="st">'Ulixertinib'</span>)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'ps_bins'</span>] <span class="op">=</span> pd.cut(df.pseudotime, bins<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">9</span>,<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="fl">2.5</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, gene <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">'pou5f1'</span>, <span class="st">'nanog'</span>, <span class="st">'fgf4'</span>, <span class="st">'klf17'</span>]):</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    sns.heatmap(df[[gene]].T, cmap<span class="op">=</span><span class="st">'Reds'</span>, cbar<span class="op">=</span><span class="va">False</span>, xticklabels<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax[idx])</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df[[<span class="st">'DMSO'</span>]].T, cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span>[<span class="st">'lightgrey'</span>, <span class="st">'tab:blue'</span>], xticklabels<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax[<span class="dv">4</span>])</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df[[<span class="st">'Ulixertinib'</span>]].T, cmap<span class="op">=</span>[<span class="st">'lightgrey'</span>, <span class="st">'tab:orange'</span>], cbar<span class="op">=</span><span class="va">False</span>, xticklabels<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax[<span class="dv">5</span>])</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df[[<span class="st">'treatment_codes'</span>]].T, cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="bu">list</span>(adata.uns[<span class="st">'treatment_colors'</span>]), xticklabels<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax[<span class="dv">6</span>])</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df[[<span class="st">'predictions'</span>]].T, cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span>adata.obs.predictions.<span class="bu">map</span>(mouse_ct_colors).cat.categories.tolist(), xticklabels<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax[<span class="dv">7</span>])</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df[[<span class="st">'pseudotime'</span>]].T, cmap<span class="op">=</span><span class="st">'viridis'</span>, cbar<span class="op">=</span><span class="va">False</span>, xticklabels<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax[<span class="dv">8</span>])</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax_ <span class="kw">in</span> ax:</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    ax_.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Trajectory from ICM to EPI'</span>)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">'../figures/12_niakan_mouse_pseudotime_ICM_EPI.pdf'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-40-output-1.png"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> (pd.crosstab(df.ps_bins, df.treatment, normalize<span class="op">=</span><span class="st">'index'</span>) <span class="op">*</span> <span class="dv">100</span>).plot.bar(color<span class="op">=</span>[<span class="st">'tab:blue'</span>, <span class="st">'lightgrey'</span>, <span class="st">'tab:orange'</span>], title<span class="op">=</span><span class="st">'Treated cells over pseudotime'</span>, xlabel<span class="op">=</span><span class="st">'Binned pseudotime'</span>, ylabel<span class="op">=</span><span class="st">'</span><span class="sc">% o</span><span class="st">f cells'</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>ax.figure.savefig(<span class="st">'../figures/12_niakan_mouse_pseudotime_ICM_EPI_treatment.pdf'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="04_mouse_integrationPlots_files/figure-html/cell-41-output-1.png"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="save-additional-stuff" class="level2" data-number="3">
+<h2 data-number="3" data-anchor-id="save-additional-stuff"><span class="header-section-number">3</span> Save additional stuff</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> sc.read_h5ad(<span class="st">'../results/12_niakan.mouse.withPredictions.h5ad'</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> sc.read_h5ad(<span class="st">"../data/assays/SCR_MP_20241207/processed/combined_matrix.h5ad"</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>counts.var[<span class="st">'gene_id'</span>] <span class="op">=</span> counts.var_names</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>counts.var_names <span class="op">=</span> counts.var.gene_symbol.<span class="bu">str</span>.lower().values</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>counts.var_names_make_unique()</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> counts[adata.obs_names, adata.var_names].copy()</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>counts.obs <span class="op">=</span> adata.obs.copy()</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>counts.var <span class="op">=</span> adata.var.copy()</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>counts.layers[<span class="st">'counts'</span>] <span class="op">=</span> counts.X.copy()</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>sc.pp.normalize_total(counts, target_sum<span class="op">=</span><span class="dv">1_000_000</span>)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>counts.write(<span class="st">'../results/12_niakan.mouse.PRM_withPredictions.h5ad'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

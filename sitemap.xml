@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://brickmanlab.github.io/simon-et-al-2024/README.html</loc>
+    <lastmod>2025-04-05T20:47:11.521Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brickmanlab.github.io/simon-et-al-2024/notebooks/01_human_loadAndIntegrate.html</loc>
+    <lastmod>2025-04-05T20:47:12.462Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brickmanlab.github.io/simon-et-al-2024/notebooks/01_mouse_loadAndIntegrate.html</loc>
+    <lastmod>2025-04-05T20:47:13.164Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brickmanlab.github.io/simon-et-al-2024/notebooks/04_human_integrationPlots.html</loc>
+    <lastmod>2025-04-05T20:47:13.922Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brickmanlab.github.io/simon-et-al-2024/notebooks/04_mouse_integrationPlots.html</loc>
+    <lastmod>2025-04-05T20:47:14.667Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brickmanlab.github.io/simon-et-al-2024/notebooks/05_human_volcanoPlotsAndUmaps.html</loc>
+    <lastmod>2025-04-05T20:47:15.259Z</lastmod>
+  </url>
+</urlset>
