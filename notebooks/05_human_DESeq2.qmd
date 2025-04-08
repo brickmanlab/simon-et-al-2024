@@ -1,0 +1,117 @@
+---
+title: 05 - Differential expression of human blastocyst samples
+author-title: Naz Salehin, Martin Proks
+---
+
+```{r}
+library(DESeq2)
+library(tidyverse)
+#library(EnhancedVolcano)
+library(ggpubr)
+#library(fgsea)
+#library(clusterProfiler)
+#library(org.Hs.eg.db)
+```
+
+```{r}
+setwd('/home/gkb340/Brickman/projects/proks-salehin-collaborations')
+ENSG_to_SYMBOL = read_csv('results/GRCh38.110.ENSG_to_SYMBOL.csv')
+```
+
+## Every cell that is not labelled as Trophectoderm
+
+```{r}
+
+notTE_cells = read_csv('results/11_niakan_notTE_RawExpression_df.csv')
+colnames(notTE_cells)[1] <- 'Gene'
+countData = notTE_cells %>% select(!Gene) %>% as.matrix
+rownames(countData) <- notTE_cells$Gene
+colnames(countData) <- colnames(notTE_cells)[2:length(notTE_cells)]
+samples = data.frame(condition = str_extract(colnames(countData),"(Ulix|DMSO)"))
+rownames(samples) = colnames(countData)
+dds <- DESeqDataSetFromMatrix(countData = countData,
+                              colData = samples,
+                              design = ~ condition)
+                              keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+dds <- DESeq(dds, minReplicatesForReplace=Inf)
+res <- results(dds)
+res_df = as.data.frame(res)
+res_df$ensembl = rownames(res_df)
+res_df <- res_df %>% left_join(ENSG_to_SYMBOL)
+res_df %>% write_csv('results/11_niakan_notTE_DESeq2.csv')
+```
+
+## Just the Epiblast
+
+
+```{r}
+
+EPI_cells = read_csv('results/11_niakan_EPI_RawExpression_df.csv')
+colnames(EPI_cells)[1] <- 'Gene'
+countData = EPI_cells %>% select(!Gene) %>% as.matrix
+rownames(countData) <- EPI_cells$Gene
+colnames(countData) <- colnames(EPI_cells)[2:length(EPI_cells)]
+samples = data.frame(condition = str_extract(colnames(countData),"(Ulix|DMSO)"))
+rownames(samples) = colnames(countData)
+dds <- DESeqDataSetFromMatrix(countData = countData,
+                              colData = samples,
+                              design = ~ condition)
+                              keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+dds <- DESeq(dds, minReplicatesForReplace=Inf)
+res <- results(dds)
+res_df = as.data.frame(res)
+res_df$ensembl = rownames(res_df)
+res_df <- res_df %>% left_join(ENSG_to_SYMBOL)
+res_df %>% write_csv('results/11_niakan_EPI_DESeq2.csv')
+
+```
+
+
+```{r}
+
+PrE_cells = read_csv('results/11_niakan_PrE_RawExpression_df.csv')
+colnames(PrE_cells)[1] <- 'Gene'
+countData = PrE_cells %>% select(!Gene) %>% as.matrix
+rownames(countData) <- PrE_cells$Gene
+colnames(countData) <- colnames(PrE_cells)[2:length(PrE_cells)]
+samples = data.frame(condition = str_extract(colnames(countData),"(Ulix|DMSO)"))
+rownames(samples) = colnames(countData)
+dds <- DESeqDataSetFromMatrix(countData = countData,
+                              colData = samples,
+                              design = ~ condition)
+                              keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+dds <- DESeq(dds, minReplicatesForReplace=Inf)
+res <- results(dds)
+res_df = as.data.frame(res)
+res_df$ensembl = rownames(res_df)
+res_df <- res_df %>% left_join(ENSG_to_SYMBOL)
+res_df %>% write_csv('results/11_niakan_PrE_DESeq2.csv')
+
+```
+
+
+```{r}
+
+TE_cells = read_csv('results/11_niakan_TE_RawExpression_df.csv')
+colnames(TE_cells)[1] <- 'Gene'
+countData = TE_cells %>% select(!Gene) %>% as.matrix
+rownames(countData) <- TE_cells$Gene
+colnames(countData) <- colnames(TE_cells)[2:length(TE_cells)]
+samples = data.frame(condition = str_extract(colnames(countData),"(Ulix|DMSO)"))
+rownames(samples) = colnames(countData)
+dds <- DESeqDataSetFromMatrix(countData = countData,
+                              colData = samples,
+                              design = ~ condition)
+                              keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+dds <- DESeq(dds, minReplicatesForReplace=Inf)
+res <- results(dds)
+res_df = as.data.frame(res)
+res_df$ensembl = rownames(res_df)
+res_df <- res_df %>% left_join(ENSG_to_SYMBOL)
+res_df %>% write_csv('results/11_niakan_TE_DESeq2.csv')
+
+```
